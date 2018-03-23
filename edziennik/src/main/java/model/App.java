@@ -5,8 +5,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import com.opencsv.CSVReader;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
 
 
 
@@ -15,32 +18,43 @@ import com.opencsv.CSVReader;
 
 public class App {
     public static void main( String[] args ){
-      
+    	
     	 
-    	String csvFile = "/Users/User/Desktop/MOCK_DATA.csv";
+    	String csvFile = "/media/ko/Dane/Projekty/e-dziennik/edziennik/resources/MOCK_DATA.csv";
     	
    //      CSVReader reader = null;
          try {
         	 
-             CSVReader reader = new CSVReader(new FileReader(csvFile));
-             String[] line;
-    
+             List<Person> people = new CsvToBeanBuilder(new FileReader(csvFile)).withType(Person.class).build().parse();
              
-             
-             
-             
-             while ((line = reader.readNext()) != null) {
-                 System.out.println("Person [id= " + line[0] + ", name= " + line[1] + ", lastName= " + line[2] + ", email= "  + line[3] + 
-                		 ", gender= " + line[4] + ", birthDate= " + line[5] + "]");
-                 
-                 Date date = new Date();
-                 System.out.println(line[5].toString());
-                   
-                 SimpleDateFormat birthDate = new SimpleDateFormat("E yyyy/mm/dd");
-          //       System.out.println(birthDate.format(date));
-                 
-           
+             for (Person person : people) {
+            	 System.out.println(person.getFirstName());
              }
+             
+             
+             
+//             
+//             CSVReader reader = new CSVReader(new FileReader(csvFile));
+//             
+//             
+//             String[] line;
+//    
+             
+             
+//             
+//             
+//             while ((line = reader.readNext()) != null) {
+//                 System.out.println("Person [id= " + line[0] + ", name= " + line[1] + ", lastName= " + line[2] + ", email= "  + line[3] + 
+//                		 ", gender= " + line[4] + ", birthDate= " + line[5] + "]");
+//                 
+//                 Date date = new Date();
+//                 System.out.println(line[5].toString());
+//                   
+//                 SimpleDateFormat birthDate = new SimpleDateFormat("E yyyy/mm/dd");
+//          //       System.out.println(birthDate.format(date));
+//                 
+//           
+//             }
          } catch (IOException e) {
              e.printStackTrace();
          }

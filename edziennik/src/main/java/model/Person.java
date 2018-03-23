@@ -4,22 +4,22 @@ import com.opencsv.bean.CsvBindByName;
 
 public class Person {
 
-		 @CsvBindByName (column = "Id", required = true)
+		 @CsvBindByName (column = "id", required = true)
 		 private Integer id;
 	
-	     @CsvBindByName(column = "First Name", required = true)
+	     @CsvBindByName(column = "first_name", required = true)
 	     private String firstName;
 
-	     @CsvBindByName(column = "Last Name", required = true)
+	     @CsvBindByName(column = "last_name", required = true)
 	     private String lastName;
 
-	     @CsvBindByName(column = "Email", required = true)
+	     @CsvBindByName(column = "email", required = true)
 	     private String email;
 	     
-	     @CsvBindByName(column = "Gender", required = true)
+	     @CsvBindByName(column = "gender", required = true)
 	     private String gender;
 	     
-	     @CsvBindByName(column = "Birth Date", required = true)
+	     @CsvBindByName(column = "birth_day", required = true)
 	     private String birthDate;
 
 		public Integer getId() {
